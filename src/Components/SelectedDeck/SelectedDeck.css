@@ -1,0 +1,21 @@
+.SelectedDeckContainer{
+	top:30%;
+	left: 45%;
+	position: fixed;
+}
+
+.SelectedDeck{
+
+	padding: 4px;
+	text-align: center;
+	width: 250px;
+	height: 150px;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	display: table;
+}
+
+.SelectedDeck p{
+	display: table-cell;
+	vertical-align: middle;
+}

@@ -4,7 +4,7 @@ import classes from './Deck.css'
 const deck = (props) => (
 
 	<div className={classes.Deck} onClick={props.clicked}>
-		<p>{props.name}: {props.numCards} cards</p>	
+		<p>{props.name} ({props.numCards})</p>	
 	</div>
 )
 

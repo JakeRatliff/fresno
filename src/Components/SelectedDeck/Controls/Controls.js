@@ -4,8 +4,9 @@ import classes from './Controls.css';
 const controls = (props) =>{
 	return(
 		<div className={classes.Controls}>
-			<button onClick={props.backClicked}>Back</button>
-			<button onClick={props.nextClicked}>Next</button>
+			<button onClick={props.backClicked}><i className={classes.left}></i></button>
+			<span></span>
+			<button onClick={props.nextClicked}><i className={classes.right}></i></button>
 		</div>
 	)
 }

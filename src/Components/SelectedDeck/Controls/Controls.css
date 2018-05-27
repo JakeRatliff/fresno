@@ -1,9 +1,37 @@
 .Controls{
-	left: 45%;
+	left: 43%;
 	position: absolute;
 	margin-top: 15px;
 }
 
 .Controls button{
 	margin: 0 auto;
+	border-radius: 20px;
+	height: 40px;
+	width: 40px;
+	padding:0;
+}
+.Controls button:focus{
+	outline: none;
+}
+
+i {
+    border: solid #31b452;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 4px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+span{
+	margin-left:5px;
 }

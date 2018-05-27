@@ -10,6 +10,7 @@ const decks = (props) => {
 		<div className={classes.Decks}>
 			<div>My Flashcard Decks</div>
 			{decks}
+			<div className={classes.Create} onClick={props.clickedNew}> <strong>+</strong> New Deck</div>
 		</div>
 	)
 }

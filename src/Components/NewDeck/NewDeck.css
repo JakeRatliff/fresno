@@ -1,0 +1,28 @@
+.NewDeckContainer{
+	left:5%;
+	top:5%;
+	width: 90%;
+	height: 90%;
+	border: 1px solid grey;
+	box-shadow: 1px 1px 1px black;
+	border-radius: 12px;
+	position: fixed;
+	z-index: 200;
+	background-color: white;
+	box-sizing: border-box;
+
+	animation-name: slideUp;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: .5s;
+
+}
+
+@keyframes slideUp {
+	0% {
+		top: 100%;
+	}
+	100% {
+		top: 5%;
+	}
+}

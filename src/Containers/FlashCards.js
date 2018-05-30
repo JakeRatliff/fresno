@@ -46,6 +46,7 @@ class FlashCards extends Component{
 		cardNum: 0,
 		flipped: false,
 		createDeck: false
+
 	}
 
 	deckSelectedHandler = (setId) => {
@@ -89,8 +90,10 @@ class FlashCards extends Component{
 	}
 
 	backdropCloseHandler = () => {
+		console.log("top of backdropCloseHandler...")
 		this.setState({createDeck:false})
 	}
+
 
 	render(){
 		return(
@@ -109,9 +112,11 @@ class FlashCards extends Component{
 				: null}
 
 				{this.state.createDeck ?
-					<Backdrop clicked={this.backdropCloseHandler}>
+					<Aux>
+						<Backdrop clicked={this.backdropCloseHandler}/>
 						<NewDeck/>
-					</Backdrop>
+					</Aux>
+					//</Backdrop>
 				:null}
 			</Aux>
 		)

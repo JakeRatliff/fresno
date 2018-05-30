@@ -1,12 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classes from './NewDeck.css';
+import NewCard from './NewCard/NewCard';
+import Aux from '../../hoc/Aux';
 
 
-const newDeck = (props) => {
+class NewDeck extends Component{
 
-	return(
-		<div className={classes.NewDeckContainer}>Here is where new deck creation engine goes.</div>
-	)
+state = {
+	flipped:false,
+	newCards: null
 }
 
-export default newDeck;
+newCardFlippedHandler = () => {
+	console.log("Clicked the card!!");
+	const flipped = !this.state.flipped;
+	this.setState({flipped:flipped});
+	console.log(this.state)
+}
+
+	render(){
+		return(
+			<Aux>
+				<div className={classes.NewDeckContainer}>Here is where new deck creation engine goes.
+					<NewCard clicked={this.newCardFlippedHandler} flipped={this.state.flipped}/>
+				</div>
+			</Aux>
+		)
+	}
+
+
+}
+
+
+
+export default NewDeck;

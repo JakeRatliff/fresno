@@ -6,21 +6,21 @@ import Controls from './Controls/Controls'
 
 const selectedDeck = (props) => {
 
-
-	let cardText = "Select a deck to get started."
 	let num = props.cardNum;
-
-	if(props.deck && !props.flipped){
-		cardText = props.deck.cards[num].q;
-	}
-	if(props.deck && props.flipped){
-		cardText = props.deck.cards[num].a;
-	}
 
 	let progress;
 	if(props.deck){
 		progress = ((num)/(props.deck.cards.length - 1))*100 + '%'
 	}
+
+	let attachedClasses = [classes.flipper];
+	if(props.flipped){
+		attachedClasses = [classes.flipper, classes.flipped];
+	}
+
+	//TODO! if card flipped, and traversing to prev/next card (props.traversing)
+	//   then don't unflip card, but instead bring up next card front. currently, new card back is visible for a second.
+	//   use new animation (slide front in/fade back out and fade front in)
 
 
 	return(
@@ -28,13 +28,22 @@ const selectedDeck = (props) => {
 			<div className={classes.SelectedDeckContainer}>
 				<Aux>
 					<div className={classes.SelectedDeck} onClick={props.cardClicked}>
-						<p className={classes.fadeIn}>{cardText}</p>
-						<div className={classes.progressBar} style={{width: progress}}>
+						<div className={classes.flipContainer} /*onClick={this.classList.toggle('hover')}*/>
+						  <div className={attachedClasses.join(' ')}>
+						    <div className={classes.front}>
+						      <p>{props.deck.cards[num].q}</p>
+						      <div className={classes.progressBar} style={{width: progress}}></div>
+						    </div>
+						    <div className={classes.back}>
+						      <p>{props.deck.cards[num].a}</p>
+						      <div className={classes.progressBar} style={{width: progress}}></div>
+						    </div>
+						  </div>
 						</div>
 					</div>
-					<Controls backClicked={props.prevCard} nextClicked={props.nextCard}/>
 				</Aux>
 			</div>
+			<Controls backClicked={props.prevCard} nextClicked={props.nextCard}/>
 		</Aux>
 	)
 }

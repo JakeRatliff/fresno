@@ -45,7 +45,8 @@ class FlashCards extends Component{
 		selectedSet: null,
 		cardNum: 0,
 		flipped: false,
-		createDeck: false
+		createDeck: false,
+		traversingDeck:false
 
 	}
 
@@ -57,10 +58,11 @@ class FlashCards extends Component{
 
 	cardClickedHandler = () => {
 		const updatedFlipState = !this.state.flipped;
-		this.setState({flipped: updatedFlipState});
+		this.setState({flipped: updatedFlipState, traversingDeck:false});
 	}
 
 	nextCardHandler = () => {
+		this.setState({traversingDeck: true});
 		const numCards = this.state.selectedSet.cards.length - 1;
 		const cardNum = this.state.cardNum;
 		const updatedCardNum = cardNum + 1;
@@ -73,6 +75,7 @@ class FlashCards extends Component{
 	}
 
 	prevCardHandler = () => {
+		this.setState({traversingDeck: true});
 		const numCards = this.state.selectedSet.cards.length - 1;
 		const cardNum = this.state.cardNum;
 		const updatedCardNum = cardNum - 1;
@@ -108,6 +111,7 @@ class FlashCards extends Component{
 						flipped={this.state.flipped}
 						nextCard={this.nextCardHandler}
 						prevCard={this.prevCardHandler}
+						traversing={this.state.traversingDeck}
 					/>
 				: null}
 

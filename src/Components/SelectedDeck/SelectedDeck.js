@@ -7,7 +7,6 @@ import Controls from './Controls/Controls'
 const selectedDeck = (props) => {
 
 	let num = props.cardNum;
-
 	let progress;
 	if(props.deck){
 		progress = ((num)/(props.deck.cards.length - 1))*100 + '%'
@@ -15,12 +14,15 @@ const selectedDeck = (props) => {
 
 	let attachedClasses = [classes.flipper];
 	if(props.flipped){
-		attachedClasses = [classes.flipper, classes.flipped];
+		attachedClasses = [classes.flipper , classes.flipped];
 	}
 
-	//TODO! if card flipped, and traversing to prev/next card (props.traversing)
-	//   then don't unflip card, but instead bring up next card front. currently, new card back is visible for a second.
-	//   use new animation (slide front in/fade back out and fade front in)
+	console.log(attachedClasses);
+
+	let backClasses = [classes.back];
+	if(props.traversing){
+		backClasses = [classes.back, classes.hide]
+	}
 
 
 	return(
@@ -34,7 +36,7 @@ const selectedDeck = (props) => {
 						      <p>{props.deck.cards[num].q}</p>
 						      <div className={classes.progressBar} style={{width: progress}}></div>
 						    </div>
-						    <div className={classes.back}>
+						    <div className={backClasses.join(' ')}>
 						      <p>{props.deck.cards[num].a}</p>
 						      <div className={classes.progressBar} style={{width: progress}}></div>
 						    </div>
@@ -42,8 +44,9 @@ const selectedDeck = (props) => {
 						</div>
 					</div>
 				</Aux>
+				<Controls backClicked={props.prevCard} nextClicked={props.nextCard}/>
 			</div>
-			<Controls backClicked={props.prevCard} nextClicked={props.nextCard}/>
+			
 		</Aux>
 	)
 }
